@@ -1,0 +1,24 @@
+{
+  "name": "flowz-api-documentation",
+  "version": "1.0.0",
+  "description": "documentation for flowz api services",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FlowzPlatform/flowz-api-documentation.git"
+  },
+  "author": "Ajay Charotariya",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FlowzPlatform/flowz-api-documentation/issues"
+  },
+  "homepage": "https://github.com/FlowzPlatform/flowz-api-documentation#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "swagger-ui-express": "^2.0.15"
+  }
+}

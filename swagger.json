@@ -1,0 +1,2181 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "",
+    "title": "Flowz api services"
+  },
+  "host": "api.flowzcluster.tk",
+  "tags": [
+    {
+      "name": "authentication services",
+      "description": "Everything about authentication services"
+    },
+    {
+      "name": "User Services",
+      "description": "Everything about User services"
+    },
+    {
+      "name": "Ldap Services",
+      "description": "Everything about Ldap services"
+    },
+    {
+      "name": "CRM Services",
+      "description": "Everything about CRM services"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/auth/api/login": {
+      "post": {
+        "tags": [
+          "authentication services"
+        ],
+        "summary": "user login",
+        "description": "authenticate user and give logintoken",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON",
+          "text/plain"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/login"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          },
+          "401": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/auth/api/setup": {
+      "post": {
+        "tags": [
+          "authentication services"
+        ],
+        "summary": "user signup",
+        "description": "user registration to flowz services",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/signup"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          },
+          "401": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/auth/api/changepassword": {
+      "post": {
+        "tags": [
+          "authentication services"
+        ],
+        "summary": "changepassword",
+        "description": "password change functionality by providing oldpassword and newpassword",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/changepassword"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          },
+          "401": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/auth/api/forgetpassword": {
+      "post": {
+        "tags": [
+          "authentication services"
+        ],
+        "summary": "forgetpassword",
+        "description": "send forget password to user email address",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/forgetpassword"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          },
+          "401": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/auth/api/resetpassword": {
+      "post": {
+        "tags": [
+          "authentication services"
+        ],
+        "summary": "resetpassword",
+        "description": "reset user password by forget token",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/resetpassword"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          },
+          "401": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/auth/api/userdetails": {
+      "post": {
+        "tags": [
+          "authentication services"
+        ],
+        "summary": "userdetails by logintoken",
+        "description": "send forget password to user email address",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          },
+          "401": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/user/alluserdetails": {
+      "get": {
+        "tags": [
+          "User Services"
+        ],
+        "summary": "give alluserdetails",
+        "description": "api provides all userdetails from db",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          },
+          "401": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/user/getuserdetails/{uid}": {
+      "get": {
+        "tags": [
+          "User Services"
+        ],
+        "summary": "give userdetails by object_id",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "path",
+            "description": "object_id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          },
+          "401": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/user/updateuserdetails/{uid}": {
+      "put": {
+        "tags": [
+          "User Services"
+        ],
+        "summary": "update userdetails by object_id",
+        "description": "update user details by user object_id and providing json field",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "path",
+            "description": "object_id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/updateuserdetails"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          },
+          "401": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/user/deleteuserdetails/{uid}": {
+      "delete": {
+        "tags": [
+          "User Services"
+        ],
+        "summary": "delete userdetails by object_id",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "path",
+            "description": "object_id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          },
+          "401": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/auth/api/ldapauth": {
+      "post": {
+        "tags": [
+          "Ldap Services"
+        ],
+        "summary": "login ldap user",
+        "description": "login ldap user with flowz services",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/login"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          },
+          "401": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/authldap/init": {
+      "post": {
+        "tags": [
+          "Ldap Services"
+        ],
+        "summary": "initialize app name",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/init"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          },
+          "401": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/authldap/userslist/{role}": {
+      "get": {
+        "tags": [
+          "Ldap Services"
+        ],
+        "summary": "give ldap userlist",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "name": "role",
+            "in": "path",
+            "description": "rolename",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          },
+          "401": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/authldap/useradd": {
+      "post": {
+        "tags": [
+          "Ldap Services"
+        ],
+        "summary": "add new user",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/useradd"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          },
+          "401": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/authldap/addRoles": {
+      "post": {
+        "tags": [
+          "Ldap Services"
+        ],
+        "summary": "add new roles",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/addRoles"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          },
+          "401": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/authldap/getroles": {
+      "get": {
+        "tags": [
+          "Ldap Services"
+        ],
+        "summary": "give list of roles",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          },
+          "401": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/authldap/setpermission": {
+      "post": {
+        "tags": [
+          "Ldap Services"
+        ],
+        "summary": "setting permission for  app",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/setpermission"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          },
+          "401": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/authldap/getpermission/{app}/{taskType}/{roleId}/{resourceId}": {
+      "get": {
+        "tags": [
+          "Ldap Services"
+        ],
+        "summary": "getpermission resources",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "name": "app",
+            "in": "path",
+            "description": "appname",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "taskType",
+            "in": "path",
+            "description": "taskType",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "roleId",
+            "in": "path",
+            "description": "roleId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "resourceId",
+            "in": "path",
+            "description": "resourceId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          },
+          "401": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/authldap/getallpermission/{app}": {
+      "get": {
+        "tags": [
+          "Ldap Services"
+        ],
+        "summary": "get allpermission resources of app",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "name": "app",
+            "in": "path",
+            "description": "appname",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          },
+          "401": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/crm/crm-service": {
+      "get": {
+        "tags": [
+          "CRM Services"
+        ],
+        "summary": "get list of all crm status & currency",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/crm/crm-case": {
+      "get": {
+        "tags": [
+          "CRM Services"
+        ],
+        "summary": "get list of all crm data",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization Key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "CRM Services"
+        ],
+        "summary": "post the crm data",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization Key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/crm-case"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/crm/crm-case/{id}": {
+      "get": {
+        "tags": [
+          "CRM Services"
+        ],
+        "summary": "get crm data of perticular id",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "CRM Services"
+        ],
+        "summary": "update crm data of perticular id",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/crm-case"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/crm/relationshipcomments": {
+      "get": {
+        "tags": [
+          "CRM Services"
+        ],
+        "summary": "get all relationshipcomments",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "CRM Services"
+        ],
+        "summary": "post relationshipcomments",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/relationshipcomments"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/crm/relationshipcomments/{id}": {
+      "get": {
+        "tags": [
+          "CRM Services"
+        ],
+        "summary": "get relationshipcomments of perticular id",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "CRM Services"
+        ],
+        "summary": "update relationshipcomments of perticular id",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/relationshipcomments"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/crm/settings": {
+      "get": {
+        "tags": [
+          "CRM Services"
+        ],
+        "summary": "show user's account cofiguration detail",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "name": "isActive",
+            "in": "query",
+            "description": "Boolean Value",
+            "required": true,
+            "type": "boolean"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization Key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "subscriptionId",
+            "in": "header",
+            "description": "subscriptionId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "CRM Services"
+        ],
+        "summary": "post user's account cofiguration detail",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization Key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "subscriptionId",
+            "in": "header",
+            "description": "subscriptionId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/settings"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/crm/settings/{settingId}": {
+      "get": {
+        "tags": [
+          "CRM Services"
+        ],
+        "summary": "show user's account cofiguration detail of perticular id",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "name": "settingId",
+            "in": "path",
+            "description": "settingId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization Key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "subscriptionId",
+            "in": "header",
+            "description": "subscriptionId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "CRM Services"
+        ],
+        "summary": "update user's account cofiguration detail of perticular id",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "name": "settingId",
+            "in": "path",
+            "description": "settingId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization Key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "subscriptionId",
+            "in": "header",
+            "description": "subscriptionId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/settings"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/crm/contacts": {
+      "get": {
+        "tags": [
+          "CRM Services"
+        ],
+        "summary": "get all contacts details",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "name": "settingId",
+            "in": "query",
+            "description": "settingId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization Key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "CRM Services"
+        ],
+        "summary": "create new contact",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization Key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/crm-contacts"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/crm/customcustomer": {
+      "get": {
+        "tags": [
+          "CRM Services"
+        ],
+        "summary": "get all custom contacts details",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "name": "settingId",
+            "in": "query",
+            "description": "settingId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "CRM Services"
+        ],
+        "summary": "save the custom contacts details",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization Key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/crm-custom-contacts"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/crm/invoice": {
+      "get": {
+        "tags": [
+          "CRM Services"
+        ],
+        "summary": "get all invoice",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "name": "settingId",
+            "in": "query",
+            "description": "settingId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization Key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "CRM Services"
+        ],
+        "summary": "create new invoice",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization Key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/crm-invoice"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/crm/custominvoice": {
+      "get": {
+        "tags": [
+          "CRM Services"
+        ],
+        "summary": "get all custom invoice",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "name": "settingId",
+            "in": "query",
+            "description": "settingId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "CRM Services"
+        ],
+        "summary": "save the custom invoice",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization Key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/crm-invoice"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/crm/payment": {
+      "post": {
+        "tags": [
+          "CRM Services"
+        ],
+        "summary": "make payment of invoice",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization Key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/payment"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/crm/transaction": {
+      "get": {
+        "tags": [
+          "CRM Services"
+        ],
+        "summary": "get all transactions",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "name": "settingId",
+            "in": "query",
+            "description": "settingId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/crm/exporttopdf": {
+      "post": {
+        "tags": [
+          "CRM Services"
+        ],
+        "summary": "convert html content into pdf",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "html content",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pdf"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/subscription/invite": {
+      "post": {
+        "tags": [
+          "CRM Services"
+        ],
+        "summary": "send invitation to user",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization Key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/invite"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/subscription/subscription-invitation": {
+      "get": {
+        "tags": [
+          "CRM Services"
+        ],
+        "summary": "get subscription history",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization Key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "isDeleted",
+            "in": "query",
+            "description": "Boolean Value(By-Default:true)",
+            "required": true,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/subscription/register-roles": {
+      "get": {
+        "tags": [
+          "CRM Services"
+        ],
+        "summary": "get Data Of Subscription User",
+        "description": "",
+        "operationId": "",
+        "consumes": [
+          "application/JSON"
+        ],
+        "produces": [
+          "application/JSON"
+        ],
+        "parameters": [
+          {
+            "name": "module",
+            "in": "query",
+            "description": "module name (Ex. crm)",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "login": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "webmaster3@gmail.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "123456"
+        }
+      }
+    },
+    "signup": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "webmaster3@gmail.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "123456"
+        }
+      }
+    },
+    "changepassword": {
+      "type": "object",
+      "properties": {
+        "oldpass": {
+          "type": "string",
+          "example": "your old password"
+        },
+        "newpass": {
+          "type": "string",
+          "example": "your new password"
+        }
+      }
+    },
+    "forgetpassword": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "your email id"
+        },
+        "url": {
+          "type": "string",
+          "example": "your redirect url (ex. http://www.example.com)"
+        }
+      }
+    },
+    "resetpassword": {
+      "type": "object",
+      "properties": {
+        "new_password": {
+          "type": "string",
+          "example": "provide your new password"
+        },
+        "token": {
+          "type": "string",
+          "example": "provide your forget token"
+        }
+      }
+    },
+    "updateuserdetails": {
+      "type": "object"
+    },
+    "init": {
+      "type": "object",
+      "properties": {
+        "app": {
+          "type": "string",
+          "example": "provide your appname"
+        }
+      }
+    },
+    "useradd": {
+      "type": "object",
+      "properties": {
+        "cn": {
+          "type": "string",
+          "example": "common name"
+        },
+        "sn": {
+          "type": "string",
+          "example": "surname"
+        },
+        "gidNumber": {
+          "type": "string",
+          "example": "group idNumber"
+        },
+        "givenname": {
+          "type": "string",
+          "example": "givenname"
+        },
+        "mail": {
+          "type": "string",
+          "example": "email id"
+        },
+        "uid": {
+          "type": "string",
+          "example": "user id"
+        },
+        "uidNumber": {
+          "type": "string",
+          "example": "user idNumber"
+        },
+        "userpassword": {
+          "type": "string",
+          "example": "userpassword"
+        }
+      }
+    },
+    "addRoles": {
+      "type": "object",
+      "properties": {
+        "groupname": {
+          "type": "string",
+          "example": "groupname"
+        },
+        "um": {
+          "type": "string",
+          "example": "unique member Dn"
+        },
+        "owner": {
+          "type": "string",
+          "example": "owner Dn"
+        }
+      }
+    },
+    "setpermission": {
+      "type": "object",
+      "properties": {
+        "resourceId": {
+          "type": "string",
+          "example": "resource id"
+        },
+        "roleId": {
+          "type": "string",
+          "example": "role id"
+        },
+        "taskType": {
+          "type": "string",
+          "example": "tasktype"
+        },
+        "accessValue": {
+          "type": "string",
+          "example": "access value"
+        },
+        "app": {
+          "type": "string",
+          "example": "appname"
+        }
+      }
+    },
+    "crm-case": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "CRM Module"
+        },
+        "cname": {
+          "type": "string",
+          "example": "Jony Doe"
+        },
+        "project": {
+          "type": "string",
+          "example": "Todo"
+        },
+        "status": {
+          "type": "string",
+          "example": "In Process"
+        },
+        "assignee": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "example": [
+            "xyz",
+            "abc"
+          ]
+        },
+        "contractdate": {
+          "type": "string",
+          "format": "date",
+          "example": "31-12-2017"
+        },
+        "nextdate": {
+          "type": "string",
+          "format": "date",
+          "example": "31-12-2017"
+        },
+        "priceinput": {
+          "type": "integer",
+          "example": "123"
+        },
+        "email": {
+          "type": "string",
+          "example": "webmaster3@gmail.com"
+        },
+        "phone": {
+          "type": "integer",
+          "example": "9945782510"
+        }
+      }
+    },
+    "relationshipcomments": {
+      "type": "object",
+      "properties": {
+        "comment": {
+          "type": "string",
+          "example": "Enter Comment"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2018-02-08T11:17:29.538Z"
+        },
+        "created_by": {
+          "type": "string",
+          "example": "Username"
+        },
+        "crm_id": {
+          "type": "string",
+          "example": "CRM case id"
+        },
+        "user_id": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "example": [
+            "xyz",
+            "abc"
+          ]
+        },
+        "isEdited": {
+          "type": "string",
+          "format": "date",
+          "example": "31-12-2017"
+        },
+        "isDeleted": {
+          "type": "string",
+          "format": "date",
+          "example": "31-12-2017"
+        },
+        "deleted_by": {
+          "type": "integer",
+          "example": "123"
+        },
+        "deleted_at": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2018-02-08T11:17:29.538Z"
+        },
+        "edited_by": {
+          "type": "integer",
+          "example": "9945782510"
+        },
+        "edited_at": {
+          "type": "integer",
+          "format": "date-time",
+          "example": "2018-02-08T11:17:29.538Z"
+        }
+      }
+    },
+    "crm-contacts": {
+      "type": "object",
+      "properties": {
+        "settingId": {
+          "type": "string",
+          "example": "5a398717-df05-45b7-aaa2-020bas875"
+        },
+        "Name": {
+          "type": "string",
+          "example": "Jony Doe"
+        },
+        "ContactStatus": {
+          "type": "string",
+          "example": "ACTIVE"
+        },
+        "EmailAddress": {
+          "type": "string",
+          "example": "jonydoe@mail.com"
+        },
+        "AddressLine1": {
+          "type": "string",
+          "example": "AddressLine1"
+        },
+        "AddressLine2": {
+          "type": "string",
+          "example": "AddressLine2"
+        },
+        "City": {
+          "type": "string",
+          "example": "Vadodara"
+        },
+        "Country": {
+          "type": "string",
+          "example": "India"
+        },
+        "PostalCode": {
+          "type": "string",
+          "example": 390009
+        },
+        "PhoneNumber": {
+          "type": "integer",
+          "example": "9945782510"
+        }
+      }
+    },
+    "crm-custom-contacts": {
+      "type": "object",
+      "properties": {
+        "settingId": {
+          "type": "string",
+          "example": "5a398717-df05-45b7-aaa2-020bas875"
+        },
+        "Name": {
+          "type": "string",
+          "example": "Jony Doe"
+        },
+        "ContactStatus": {
+          "type": "string",
+          "example": "ACTIVE"
+        },
+        "EmailAddress": {
+          "type": "string",
+          "example": "jonydoe@mail.com"
+        },
+        "Address": {
+          "type": "string",
+          "example": "AddressLine1,AddressLine2,City,State,PostalCode,Country"
+        },
+        "PhoneNumber": {
+          "type": "integer",
+          "example": "9945782510"
+        }
+      }
+    },
+    "settings": {
+      "type": "object",
+      "properties": {
+        "configName": {
+          "type": "string",
+          "example": "Enter configName"
+        },
+        "certificate": {
+          "type": "string",
+          "example": "LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlDWEFJQkFBS0JnUUMrSEtURWZpN1JJM1NLUnA4dC91SUFoTm9PR2xReGlBQgpBb0dCQUowSzJrejZrei90MHVJNnJsbDNlRWZIZHIwNW9KeitvWStXS1VlMTBQckd6ZU5RaDVVelppQzNkUFlFClFDcXU0M0dGTVZ0ZTgyY1VQWVArakhLZUJobFZmOEp2UkxLRE41a2dzUElFRWJ6a2ZaUFByVUtBbVVCN09vTnEKb1hBODlHSXJMSjlWVUNubFlrN1VscURacVJ1WXVLMHhBYjN4dFNkUWZoQW8vMVdsQWtBZ2p2CkxOL0xtZGFiRndKQkFOTlRHM1RZeFlnTHpHSHl6bDltOURYeTQ2dnVUWXdTWHgzZnY5TUM4QmV1U0NjeTgvQVIKS3hoQkRjZWpleHV4bzV6d0FmMkxuanVTR05kK3RXMk5ZT2NDUUJtTUkyUUJ4SHJuTFhpSzFqUWlYcHZXY2QxVwp1dVZzYXp6TXNEa0VWRlJRblg3VzY4bGttM2NsOHYxQzRiYms3aXFEekU1S1BYT2NWaHZlUDVHek1zVUNRREJDCkRFVVVzNWNyeXBLYmxoRW5PNkdPUS"
+        },
+        "useragent": {
+          "type": "string",
+          "example": "useragent"
+        },
+        "consumerKey": {
+          "type": "string",
+          "example": "xxxxxxxxxxxxxxxxxx"
+        },
+        "consumerSecret": {
+          "type": "string",
+          "example": "xxxxxxxxxxxxxxxxxx"
+        },
+        "domain": {
+          "type": "string",
+          "example": "xero"
+        },
+        "pem": {
+          "type": "string",
+          "example": "1501480686000-privatekey.pem"
+        },
+        "isActive": {
+          "type": "boolean",
+          "example": true
+        },
+        "isDeleated": {
+          "type": "boolean",
+          "example": false
+        }
+      }
+    },
+    "crm-invoice": {
+      "type": "object",
+      "properties": {
+        "settingId": {
+          "type": "string",
+          "example": "5a398717-df05-45b7-aaa2-020bas875"
+        },
+        "Name": {
+          "type": "string",
+          "example": "Jony Doe"
+        },
+        "DueDate": {
+          "type": "string",
+          "format": "date",
+          "example": "31-12-2017"
+        },
+        "products": {
+          "$ref": "#/definitions/products"
+        }
+      }
+    },
+    "products": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "example": "for sale"
+          },
+          "qty": {
+            "type": "integer",
+            "example": 12
+          },
+          "amount": {
+            "type": "integer",
+            "example": 250
+          }
+        }
+      }
+    },
+    "payment": {
+      "type": "object",
+      "properties": {
+        "settingId": {
+          "type": "string",
+          "example": "5a398717-df05-45b7-aaa2-020bas875"
+        },
+        "gateway": {
+          "type": "string",
+          "example": "stripe"
+        },
+        "id": {
+          "type": "string",
+          "example": "Invoice ID"
+        },
+        "amount": {
+          "type": "integer",
+          "example": 100
+        },
+        "Name": {
+          "type": "string",
+          "example": "Jany Doe"
+        },
+        "type": {
+          "type": "string",
+          "example": "Visa"
+        },
+        "cardNumber": {
+          "type": "integer",
+          "example": 4242424242424242
+        },
+        "expMonth": {
+          "type": "integer",
+          "example": "09"
+        },
+        "expYear": {
+          "type": "integer",
+          "example": 2022
+        },
+        "cvc": {
+          "type": "integer",
+          "example": 458
+        }
+      }
+    },
+    "pdf": {
+      "type": "object",
+      "properties": {
+        "html": {
+          "type": "string",
+          "example": "<h1>Hello</h1>"
+        }
+      }
+    },
+    "invite": {
+      "type": "object",
+      "properties": {
+        "toEmail": {
+          "type": "string",
+          "example": "janydoe@mail.com"
+        },
+        "subscriptionId": {
+          "type": "string",
+          "example": "5a398717-df05-45b7-aaa2-020bas875"
+        },
+        "name": {
+          "type": "object",
+          "example": "Jany Doe"
+        },
+        "role": {
+          "$ref": "#/definitions/role"
+        },
+        "fromEmail": {
+          "type": "string",
+          "example": "system@mail.com"
+        }
+      }
+    },
+    "role": {
+      "type": "object",
+      "properties": {
+        "crm": {
+          "type": "string",
+          "example": "admin"
+        }
+      }
+    }
+  }
+}
