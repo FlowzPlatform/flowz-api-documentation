@@ -7,6 +7,7 @@ then
     USERNAME="$DOCKER_USERNAME_FLOWZ";
     TAG="latest";
     PORT="$PORT";
+    HOST="$HOST_MASTER";
     RANCHER_ACCESSKEY="$RANCHER_ACCESSKEY_MASTER";
     RANCHER_SECRETKEY="$RANCHER_SECRETKEY_MASTER";
     RANCHER_URL="$RANCHER_URL_MASTER";
@@ -23,6 +24,7 @@ then
       USERNAME="$DOCKER_USERNAME";
       TAG="dev";
       PORT="$PORT";
+      HOST="$HOST_DEVELOP";
       RANCHER_ACCESSKEY="$RANCHER_ACCESSKEY_DEVELOP";
       RANCHER_SECRETKEY="$RANCHER_SECRETKEY_DEVELOP";
       RANCHER_URL="$RANCHER_URL_DEVELOP";
@@ -39,6 +41,7 @@ then
       USERNAME="$DOCKER_USERNAME";
       TAG="staging";
       PORT="$PORT";
+      HOST="$HOST_STAGING";
       RANCHER_ACCESSKEY="$RANCHER_ACCESSKEY_STAGING";
       RANCHER_SECRETKEY="$RANCHER_SECRETKEY_STAGING";
       RANCHER_URL="$RANCHER_URL_STAGING";
@@ -54,6 +57,7 @@ else
       USERNAME="$DOCKER_USERNAME";
       TAG="qa";
       PORT="$PORT";
+      HOST="$HOST_QA";
       RANCHER_ACCESSKEY="$RANCHER_ACCESSKEY_QA";
       RANCHER_SECRETKEY="$RANCHER_SECRETKEY_QA";
       RANCHER_URL="$RANCHER_URL_QA";
@@ -71,5 +75,5 @@ curl -u ""$RANCHER_ACCESSKEY":"$RANCHER_SECRETKEY"" \
 -H 'Accept: application/json' \
 -H 'Content-Type: application/json' \
 -d '{
-  "inServiceStrategy":{"launchConfig": {"imageUuid":"docker:'$USERNAME'/flowz-api-documentation:'$TAG'","kind": "container","labels":{"io.rancher.container.pull_image": "always","io.rancher.scheduler.affinity:host_label": "'"$BACKEND_HOST"'"},"ports": ["3005:3005/tcp"],"environment": {"PORT": "'"$PORT"'"},"healthCheck": {"type": "instanceHealthCheck","healthyThreshold": 2,"initializingTimeout": 60000,"interval": 2000,"name": null,"port": 3005,"recreateOnQuorumStrategyConfig": {"type": "recreateOnQuorumStrategyConfig","quorum": 1},"reinitializingTimeout": 60000,"responseTimeout": 60000,"strategy": "recreateOnQuorum","unhealthyThreshold": 3},"networkMode": "managed"}},"toServiceStrategy":null}' \
+  "inServiceStrategy":{"launchConfig": {"imageUuid":"docker:'$USERNAME'/flowz-api-documentation:'$TAG'","kind": "container","labels":{"io.rancher.container.pull_image": "always","io.rancher.scheduler.affinity:host_label": "'"$BACKEND_HOST"'"},"ports": ["3005:3005/tcp"],"environment": {"PORT": "'"$PORT"'","HOST": "'"$HOST"'"},"healthCheck": {"type": "instanceHealthCheck","healthyThreshold": 2,"initializingTimeout": 60000,"interval": 2000,"name": null,"port": 3005,"recreateOnQuorumStrategyConfig": {"type": "recreateOnQuorumStrategyConfig","quorum": 1},"reinitializingTimeout": 60000,"responseTimeout": 60000,"strategy": "recreateOnQuorum","unhealthyThreshold": 3},"networkMode": "managed"}},"toServiceStrategy":null}' \
 $RANCHER_URL/v2-beta/projects/$ENV_ID/services/$SERVICE_ID_FLOWZ_API_DOC?action=upgrade
