@@ -4,7 +4,7 @@
     "version": "",
     "title": "Flowz api services"
   },
-  "host": "api.flowzcluster.tk",
+  "host": "api.",
   "tags": [
     {
       "name": "authentication services",
